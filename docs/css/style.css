@@ -1,0 +1,61 @@
+body {
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+  -webkit-animation-name: backgroundColorPalette;
+          animation-name: backgroundColorPalette;
+  -webkit-animation-duration: 30s;
+          animation-duration: 30s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@-webkit-keyframes backgroundColorPalette {
+  0% {
+    background: #add8e6;
+  }
+  50% {
+    background: #b8d3db;
+  }
+  75% {
+    background: #99c9da;
+  }
+  100% {
+    background: #add8e6;
+  }
+}
+
+@keyframes backgroundColorPalette {
+  0% {
+    background: #add8e6;
+  }
+  50% {
+    background: #b8d3db;
+  }
+  75% {
+    background: #99c9da;
+  }
+  100% {
+    background: #add8e6;
+  }
+}
+
+cloud {
+  position: absolute;
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-repeat: no-repeat;
+}
+
+cloud {
+  background-image: url(../images/cloud.png);
+  background-size: contain;
+  width: 130px;
+  height: 110px;
+}
+/*# sourceMappingURL=style.css.map */
