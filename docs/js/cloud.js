@@ -10,9 +10,13 @@ export class Cloud {
     create() {
         this.div = document.createElement("cloud");
         document.body.appendChild(this.div);
+        this.skin = Math.floor(Math.random() * (2 - 0) + 0);
+        let cloudImages = ["url(./images/cloud1.png)",
+            "url(./images/cloud2.png)"];
+        this.div.style.backgroundImage = cloudImages[this.skin];
         this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
-        this.scale = Math.random() * (3 - 1) + 1;
+        this.scale = Math.random() * (4 - 1) + 1;
         this.xspeed = this.scale / 2;
     }
     update() {

@@ -4,6 +4,7 @@ export class Cloud {
     private y : number = 0;
     private xspeed : number = 0;
     private scale : number = 0;
+    private skin : number;
     private div : HTMLElement;
 
     constructor() {
@@ -15,12 +16,18 @@ export class Cloud {
         this.div = document.createElement("cloud");
         document.body.appendChild(this.div);
 
+        // Generate random skin 
+        this.skin = Math.floor(Math.random() * (2 - 0) + 0);
+        let cloudImages = ["url(./images/cloud1.png)",
+                           "url(./images/cloud2.png)"];
+        this.div.style.backgroundImage = cloudImages[this.skin];
+
         // Generate a random x and y value within de width and height of the viewport
         this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
 
         // generate random scale size 
-        this.scale = Math.random() * (3 - 1) + 1;
+        this.scale = Math.random() * (4 - 1) + 1;
 
         // generate speed 
         this.xspeed = this.scale / 2;
