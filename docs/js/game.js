@@ -1,4 +1,5 @@
 import { Cloud } from "./cloud.js";
+import { Player } from "./player.js";
 class Game {
     constructor() {
         this.clouds = [];
@@ -6,6 +7,7 @@ class Game {
         for (let i = 0; i < 20; i++) {
             this.clouds.push(new Cloud());
         }
+        this.player = new Player;
         this.gameLoop();
     }
     gameLoop() {
