@@ -44,12 +44,19 @@ body {
   }
 }
 
-cloud {
+cloud, player {
   position: absolute;
   display: block;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background-repeat: no-repeat;
+}
+
+player {
+  background-image: url(../images/pigeon.png);
+  background-size: contain;
+  width: 100px;
+  height: 80px;
 }
 
 cloud {

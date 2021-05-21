@@ -22,13 +22,19 @@ body {
     100% {
       background: #add8e6;
     }
-  }
+}
 
-cloud {
+cloud, player {
     position: absolute;
     display: block;
     box-sizing: border-box;
     background-repeat: no-repeat;
+}
+
+player {
+    background-image: url(../images/pigeon.png);
+    background-size: contain;
+    width:100px; height: 80px;
 }
 
 cloud {
