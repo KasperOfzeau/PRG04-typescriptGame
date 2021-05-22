@@ -14,6 +14,36 @@ body {
           animation-timing-function: linear;
 }
 
+body cloud, body player, body bullet {
+  position: absolute;
+  display: block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-repeat: no-repeat;
+}
+
+body player {
+  background-image: url(../images/pigeon.png);
+  background-size: contain;
+  width: 100px;
+  height: 80px;
+  z-index: 999;
+}
+
+body bullet {
+  background-image: url(../images/bullet.png);
+  background-size: contain;
+  width: 60px;
+  height: 40px;
+  z-index: 999;
+}
+
+body cloud {
+  background-size: contain;
+  width: 130px;
+  height: 110px;
+}
+
 @-webkit-keyframes backgroundColorPalette {
   0% {
     background: #add8e6;
@@ -42,26 +72,5 @@ body {
   100% {
     background: #add8e6;
   }
-}
-
-cloud, player {
-  position: absolute;
-  display: block;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  background-repeat: no-repeat;
-}
-
-player {
-  background-image: url(../images/pigeon.png);
-  background-size: contain;
-  width: 100px;
-  height: 80px;
-}
-
-cloud {
-  background-size: contain;
-  width: 130px;
-  height: 110px;
 }
 /*# sourceMappingURL=style.css.map */

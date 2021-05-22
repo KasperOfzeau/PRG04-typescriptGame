@@ -7,6 +7,32 @@ body {
     animation-iteration-count: infinite;
     animation-direction: alternate;
     animation-timing-function: linear;
+
+    cloud, player, bullet {
+      position: absolute;
+      display: block;
+      box-sizing: border-box;
+      background-repeat: no-repeat;
+    }
+  
+    player {
+        background-image: url(../images/pigeon.png);
+        background-size: contain;
+        width:100px; height: 80px;
+        z-index: 999;
+    }
+    
+    bullet {
+      background-image: url(../images/bullet.png);
+        background-size: contain;
+        width:60px; height: 40px;
+        z-index: 999;
+    }
+    
+    cloud {
+        background-size: contain;
+        width:130px; height: 110px;
+    }
 }
 
 @keyframes backgroundColorPalette {
@@ -22,22 +48,4 @@ body {
     100% {
       background: #add8e6;
     }
-}
-
-cloud, player {
-    position: absolute;
-    display: block;
-    box-sizing: border-box;
-    background-repeat: no-repeat;
-}
-
-player {
-    background-image: url(../images/pigeon.png);
-    background-size: contain;
-    width:100px; height: 80px;
-}
-
-cloud {
-    background-size: contain;
-    width:130px; height: 110px;
 }
