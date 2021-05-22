@@ -9,7 +9,7 @@ class Game {
     constructor() {
         console.log("Game was created!");
         // Create clouds
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 30; i++) {
             this.clouds.push(new Cloud());
         }
 
@@ -24,6 +24,12 @@ class Game {
         for(let c of this.clouds) {
             c.update();
         }
+
+        for (let i = 0; i < this.player.bullets.length; i++) {
+            this.player.bullets[i].update();
+        }
+        // update player 
+        this.player.update();
 
         requestAnimationFrame(() => this.gameLoop());
     }

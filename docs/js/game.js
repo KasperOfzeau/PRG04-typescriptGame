@@ -4,7 +4,7 @@ class Game {
     constructor() {
         this.clouds = [];
         console.log("Game was created!");
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 30; i++) {
             this.clouds.push(new Cloud());
         }
         this.player = new Player;
@@ -14,6 +14,10 @@ class Game {
         for (let c of this.clouds) {
             c.update();
         }
+        for (let i = 0; i < this.player.bullets.length; i++) {
+            this.player.bullets[i].update();
+        }
+        this.player.update();
         requestAnimationFrame(() => this.gameLoop());
     }
     checkCollision(a, b) {
