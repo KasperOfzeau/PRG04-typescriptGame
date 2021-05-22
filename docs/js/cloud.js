@@ -16,13 +16,15 @@ export class Cloud {
         this.div.style.backgroundImage = cloudImages[this.skin];
         this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
-        this.scale = Math.random() * (4 - 1) + 1;
+        this.scale = Math.random() * (5 - 1) + 1;
+        let zIndex = Math.floor(this.scale).toString();
+        this.div.style.zIndex = zIndex;
         this.xspeed = this.scale / 2;
     }
     update() {
         this.x -= this.xspeed;
-        if (this.x + this.div.clientWidth < 0) {
-            this.x = window.innerWidth;
+        if (this.x + this.div.clientWidth * 2 < 0) {
+            this.x = window.innerWidth + this.div.clientWidth;
             this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
         }
         this.div.style.transform = `translate(${this.x}px, ${this.y}px) scale(${this.scale})`;
