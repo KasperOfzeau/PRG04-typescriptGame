@@ -38,7 +38,7 @@ export class Powerup {
         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
 
-    public getPowerup() {
+    public setPowerup() {
 
     }
 

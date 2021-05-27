@@ -19,7 +19,7 @@ export class Powerup {
         }
         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
-    getPowerup() {
+    setPowerup() {
     }
     getRectangle() {
         return this.div.getBoundingClientRect();
