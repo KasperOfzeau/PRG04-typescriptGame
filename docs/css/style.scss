@@ -8,7 +8,7 @@ body {
     animation-direction: alternate;
     animation-timing-function: linear;
 
-    cloud, player, bullet {
+    cloud, player, bullet, powerup {
       position: absolute;
       display: block;
       box-sizing: border-box;
@@ -19,7 +19,7 @@ body {
         background-image: url(../images/pigeon.png);
         background-size: contain;
         width:100px; height: 80px;
-        z-index: 999;
+        z-index: 1000;
     }
     
     bullet {
@@ -32,6 +32,12 @@ body {
     cloud {
         background-size: contain;
         width:130px; height: 110px;
+    }
+
+    powerup {
+      width:60px; height: 40px;
+      background-color: yellow;
+      z-index: 999;
     }
 }
 

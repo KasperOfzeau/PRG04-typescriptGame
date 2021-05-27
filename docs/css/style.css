@@ -14,7 +14,7 @@ body {
           animation-timing-function: linear;
 }
 
-body cloud, body player, body bullet {
+body cloud, body player, body bullet, body powerup {
   position: absolute;
   display: block;
   -webkit-box-sizing: border-box;
@@ -27,7 +27,7 @@ body player {
   background-size: contain;
   width: 100px;
   height: 80px;
-  z-index: 999;
+  z-index: 1000;
 }
 
 body bullet {
@@ -42,6 +42,13 @@ body cloud {
   background-size: contain;
   width: 130px;
   height: 110px;
+}
+
+body powerup {
+  width: 60px;
+  height: 40px;
+  background-color: yellow;
+  z-index: 999;
 }
 
 @-webkit-keyframes backgroundColorPalette {
