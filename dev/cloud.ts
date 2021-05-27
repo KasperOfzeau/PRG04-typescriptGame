@@ -37,7 +37,7 @@ export class Cloud {
         this.xspeed = this.scale / 2;
     }
 
-    update() {
+    public update() {
         // Move the cloud (x-value) to the left. 
         this.x -= this.xspeed;
         // Check if the cloud is completely outside the screen (left side)

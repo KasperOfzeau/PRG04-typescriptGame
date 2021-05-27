@@ -10,7 +10,7 @@ export class Bullet {
         this.create();
     }
 
-    create() {
+    private create() {
         this.div = document.createElement("bullet");
         document.body.appendChild(this.div);
 
@@ -21,7 +21,7 @@ export class Bullet {
         this.y = playery + this.div.clientHeight;
     }
 
-    update() {
+    public update() {
         // Move the bullet (x-value) to the left.
         this.x += 10;
         // Check if the bullet is completely outside the screen (right side)
