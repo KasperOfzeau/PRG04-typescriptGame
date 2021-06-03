@@ -17,6 +17,7 @@ export class Player extends CollisionGameObject {
     }
 
     private create() {
+        this.div.classList.add("player");
         // Generate a random y value within the height of the viewport
         this.x = 100;
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));

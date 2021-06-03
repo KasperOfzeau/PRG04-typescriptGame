@@ -11,6 +11,7 @@ export class Player extends CollisionGameObject {
         this.create();
     }
     create() {
+        this.div.classList.add("player");
         this.x = 100;
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
     }
