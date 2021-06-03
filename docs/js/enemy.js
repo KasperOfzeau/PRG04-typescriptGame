@@ -1,12 +1,11 @@
-export class Enemy {
-    constructor() {
-        this.xspeed = 0;
+import { CollisionGameObject } from "./CollisionGameObject.js";
+export class Enemy extends CollisionGameObject {
+    constructor(tagName) {
+        super(tagName);
         console.log("Enemy was created!");
         this.create();
     }
     create() {
-        this.div = document.createElement("enemy");
-        document.body.appendChild(this.div);
         this.skin = Math.floor(Math.random() * (2 - 0) + 0);
         let cloudImages = ["url(./images/owl.gif)",
             "url(./images/falcon.png)"];
@@ -21,12 +20,9 @@ export class Enemy {
             this.x = window.innerWidth + this.div.clientWidth;
             this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
         }
-        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
+        super.update();
     }
     killEnemy() {
-    }
-    getRectangle() {
-        return this.div.getBoundingClientRect();
     }
 }
 //# sourceMappingURL=enemy.js.map

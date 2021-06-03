@@ -1,14 +1,13 @@
 import { Bullet } from "./bullet.js";
+import { CollisionGameObject } from "./CollisionGameObject.js";
 
-export class Player {
+export class Player extends CollisionGameObject {
 
-    private x : number = 0;
-    private y : number = 0;
     private yspeed : number = 0;
     public bullets : Bullet[] = [];
-    private div : HTMLElement;
 
-    constructor() {
+    constructor(tagName : string) {
+        super(tagName);
         console.log("Player was created");
 
         window.addEventListener("keydown", (e:KeyboardEvent) => this.onKeyDown(e));
@@ -17,15 +16,7 @@ export class Player {
         this.create();
     }
 
-    public getRectangle() {
-        return this.div.getBoundingClientRect();
-    }
-
     private create() {
-        this.div = document.createElement("player");
-        this.div.classList.add("player");
-        document.body.appendChild(this.div);
-
         // Generate a random y value within the height of the viewport
         this.x = 100;
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
@@ -33,8 +24,7 @@ export class Player {
 
     public update() {
         this.y += this.yspeed
-        // Draw the player on the right coordinate (x, y)
-        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
+        super.update();
     }
 
     private onKeyDown(e: KeyboardEvent): void {

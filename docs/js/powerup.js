@@ -1,12 +1,11 @@
-export class Powerup {
-    constructor() {
-        this.xspeed = 0;
+import { CollisionGameObject } from "./CollisionGameObject.js";
+export class Powerup extends CollisionGameObject {
+    constructor(tagName) {
+        super(tagName);
         console.log("Powerup was created");
         this.create();
     }
     create() {
-        this.div = document.createElement("powerup");
-        document.body.appendChild(this.div);
         this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
         this.xspeed = 6;
@@ -17,12 +16,9 @@ export class Powerup {
             this.x = window.innerWidth + this.div.clientWidth;
             this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
         }
-        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
+        super.update();
     }
     setPowerup() {
-    }
-    getRectangle() {
-        return this.div.getBoundingClientRect();
     }
 }
 //# sourceMappingURL=powerup.js.map

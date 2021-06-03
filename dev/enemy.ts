@@ -1,20 +1,16 @@
-export class Enemy {
+import { CollisionGameObject } from "./CollisionGameObject.js";
 
-    private y : number;
-    private x : number; 
-    private xspeed : number = 0;
+export class Enemy extends CollisionGameObject {
+
     private skin : number;
-    private div : HTMLElement;
 
-    constructor() {
+    constructor(tagName : string) {
+        super(tagName);
         console.log("Enemy was created!");
         this.create();
     }
 
     private create() {
-        this.div = document.createElement("enemy");
-        document.body.appendChild(this.div);
-
         // Generate random skin 
         this.skin = Math.floor(Math.random() * (2 - 0) + 0);
         let cloudImages = ["url(./images/owl.gif)",
@@ -39,15 +35,10 @@ export class Enemy {
             this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
         }
 
-        // Draw the fish on the right coordinate (x, y)
-        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
+        super.update();
     }
 
     public killEnemy() {
 
-    }
-
-    public getRectangle() {
-        return this.div.getBoundingClientRect();
     }
 }

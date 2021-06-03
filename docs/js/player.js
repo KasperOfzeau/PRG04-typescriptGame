@@ -1,8 +1,8 @@
 import { Bullet } from "./bullet.js";
-export class Player {
-    constructor() {
-        this.x = 0;
-        this.y = 0;
+import { CollisionGameObject } from "./CollisionGameObject.js";
+export class Player extends CollisionGameObject {
+    constructor(tagName) {
+        super(tagName);
         this.yspeed = 0;
         this.bullets = [];
         console.log("Player was created");
@@ -10,19 +10,13 @@ export class Player {
         window.addEventListener("keyup", (e) => this.onKeyUp(e));
         this.create();
     }
-    getRectangle() {
-        return this.div.getBoundingClientRect();
-    }
     create() {
-        this.div = document.createElement("player");
-        this.div.classList.add("player");
-        document.body.appendChild(this.div);
         this.x = 100;
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
     }
     update() {
         this.y += this.yspeed;
-        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
+        super.update();
     }
     onKeyDown(e) {
         switch (e.key.toUpperCase()) {

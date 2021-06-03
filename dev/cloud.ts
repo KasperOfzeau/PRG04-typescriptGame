@@ -1,21 +1,18 @@
-export class Cloud {
+import { GameObject } from "./gameobject.js";
 
-    private x : number = 0;
-    private y : number = 0;
-    private xspeed : number = 0;
+export class Cloud extends GameObject {
+
     private scale : number = 0;
     private skin : number;
-    private div : HTMLElement;
 
-    constructor() {
+    constructor(tagName : string) {
+        super(tagName);
         console.log("Cloud was created!");
+
         this.create();
     }
 
     private create() {
-        this.div = document.createElement("cloud");
-        document.body.appendChild(this.div);
-
         // Generate random skin 
         this.skin = Math.floor(Math.random() * (2 - 0) + 0);
         let cloudImages = ["url(./images/cloud1.png)",

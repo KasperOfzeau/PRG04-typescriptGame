@@ -14,19 +14,19 @@ class Game {
         console.log("Game was created!");
         // Create clouds
         for (let i = 0; i < 30; i++) {
-            this.clouds.push(new Cloud());
+            this.clouds.push(new Cloud("cloud"));
         }
 
         //Create player
-        this.player = new Player;
+        this.player = new Player("player");
 
         // Create enemies
         for (let i = 0; i < 5; i++) {
-            this.enemies.push(new Enemy());
+            this.enemies.push(new Enemy("enemy"));
         }
 
         // Create powerups
-        this.powerups.push(new Powerup());
+        this.powerups.push(new Powerup("powerup"));
 
         this.gameLoop();
     }

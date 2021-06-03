@@ -9,13 +9,13 @@ class Game {
         this.powerups = [];
         console.log("Game was created!");
         for (let i = 0; i < 30; i++) {
-            this.clouds.push(new Cloud());
+            this.clouds.push(new Cloud("cloud"));
         }
-        this.player = new Player;
+        this.player = new Player("player");
         for (let i = 0; i < 5; i++) {
-            this.enemies.push(new Enemy());
+            this.enemies.push(new Enemy("enemy"));
         }
-        this.powerups.push(new Powerup());
+        this.powerups.push(new Powerup("powerup"));
         this.gameLoop();
     }
     gameLoop() {

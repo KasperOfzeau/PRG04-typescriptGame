@@ -1,15 +1,12 @@
-export class Cloud {
-    constructor() {
-        this.x = 0;
-        this.y = 0;
-        this.xspeed = 0;
+import { GameObject } from "./gameobject.js";
+export class Cloud extends GameObject {
+    constructor(tagName) {
+        super(tagName);
         this.scale = 0;
         console.log("Cloud was created!");
         this.create();
     }
     create() {
-        this.div = document.createElement("cloud");
-        document.body.appendChild(this.div);
         this.skin = Math.floor(Math.random() * (2 - 0) + 0);
         let cloudImages = ["url(./images/cloud1.png)",
             "url(./images/cloud2.png)"];

@@ -1,21 +1,17 @@
-export class Powerup {
+import { CollisionGameObject } from "./CollisionGameObject.js";
+
+export class Powerup extends CollisionGameObject {
 
     private name : string;
-    private y : number;
-    private x : number;
-    private xspeed : number = 0;
-    private div : HTMLElement;
 
-    constructor() {
+    constructor(tagName : string) {
+        super(tagName);
         console.log("Powerup was created");
 
         this.create();
     }
 
     private create() {
-        this.div = document.createElement("powerup");
-        document.body.appendChild(this.div);
-
         // Generate a random y and x value within the height of the viewport
         this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
@@ -34,15 +30,10 @@ export class Powerup {
             this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
         }
 
-        // Draw the powerup on the right coordinate (x, y)
-        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
+        super.update();
     }
 
     public setPowerup() {
 
-    }
-
-    public getRectangle() {
-        return this.div.getBoundingClientRect();
     }
 }
