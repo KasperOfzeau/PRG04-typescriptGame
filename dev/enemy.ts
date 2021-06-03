@@ -39,6 +39,10 @@ export class Enemy extends CollisionGameObject {
     }
 
     public killEnemy() {
-
+        // Generate a random x and y value within de width and height of the viewport
+        this.x = window.innerWidth + 50;
+        this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
+        // Draw the GameObject on the right coordinate (x, y)
+        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
 }

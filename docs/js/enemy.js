@@ -23,6 +23,9 @@ export class Enemy extends CollisionGameObject {
         super.update();
     }
     killEnemy() {
+        this.x = window.innerWidth + 50;
+        this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
+        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
 }
 //# sourceMappingURL=enemy.js.map
