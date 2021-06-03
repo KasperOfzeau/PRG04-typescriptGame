@@ -1,15 +1,20 @@
 import { Cloud } from "./cloud.js";
+import { Enemy } from "./enemy.js";
 import { Player } from "./player.js";
 import { Powerup } from "./powerup.js";
 class Game {
     constructor() {
         this.clouds = [];
+        this.enemies = [];
         this.powerups = [];
         console.log("Game was created!");
         for (let i = 0; i < 30; i++) {
             this.clouds.push(new Cloud());
         }
         this.player = new Player;
+        for (let i = 0; i < 5; i++) {
+            this.enemies.push(new Enemy());
+        }
         this.powerups.push(new Powerup());
         this.gameLoop();
     }
@@ -17,14 +22,27 @@ class Game {
         for (let c of this.clouds) {
             c.update();
         }
-        for (let i = 0; i < this.player.bullets.length; i++) {
-            this.player.bullets[i].update();
-        }
-        for (let i = 0; i < this.powerups.length; i++) {
-            this.powerups[i].update();
-            let hit = this.checkCollision(this.powerups[i].getRectangle(), this.player.getRectangle());
+        for (let e of this.enemies) {
+            e.update();
+            let hit = this.checkCollision(e.getRectangle(), this.player.getRectangle());
             if (hit) {
-                console.log("collision");
+                console.log("Enemy collision with player");
+            }
+        }
+        for (let b of this.player.bullets) {
+            b.update();
+            for (let e of this.enemies) {
+                let hit = this.checkCollision(b.getRectangle(), e.getRectangle());
+                if (hit) {
+                    console.log("Bullet collision with enemy");
+                }
+            }
+        }
+        for (let p of this.powerups) {
+            p.update();
+            let hit = this.checkCollision(p.getRectangle(), this.player.getRectangle());
+            if (hit) {
+                console.log("player collision with powerup");
             }
         }
         this.player.update();

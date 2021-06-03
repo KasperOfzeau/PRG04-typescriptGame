@@ -1,4 +1,5 @@
 import { Cloud } from "./cloud.js";
+import { Enemy } from "./enemy.js";
 import { Player } from "./player.js";
 import { Powerup } from "./powerup.js";
 
@@ -6,6 +7,7 @@ class Game {
 
     private clouds : Cloud[] = [];
     private player : Player;
+    private enemies : Enemy[] = [];
     private powerups : Powerup[] = [];
 
     constructor() {
@@ -18,6 +20,11 @@ class Game {
         //Create player
         this.player = new Player;
 
+        // Create enemies
+        for (let i = 0; i < 5; i++) {
+            this.enemies.push(new Enemy());
+        }
+
         // Create powerups
         this.powerups.push(new Powerup());
 
@@ -29,19 +36,37 @@ class Game {
         for(let c of this.clouds) {
             c.update();
         }
+        // update the enemies
+        for(let e of this.enemies) {
+            e.update();
+
+            // check collision with player
+            let hit = this.checkCollision(e.getRectangle(), this.player.getRectangle());
+            if(hit) {
+                console.log("Enemy collision with player")
+            }
+        }
         // update bullets
-        for (let i = 0; i < this.player.bullets.length; i++) {
-            this.player.bullets[i].update();
+        for (let b of this.player.bullets) {
+            b.update();
+
+            // Check collision with enemies
+            for(let e of this.enemies) {
+                let hit = this.checkCollision(b.getRectangle(), e.getRectangle());
+                if(hit) {
+                    console.log("Bullet collision with enemy")
+                }
+            }
         }
         // loop trough powerups
-        for (let i = 0; i < this.powerups.length; i++) {
+        for (let p of this.powerups) {
             // update powerups
-            this.powerups[i].update();
+            p.update();
 
             // check collision with powerups
-            let hit = this.checkCollision(this.powerups[i].getRectangle(), this.player.getRectangle());
+            let hit = this.checkCollision(p.getRectangle(), this.player.getRectangle());
             if(hit) {
-                console.log("collision")
+                console.log("player collision with powerup")
             }
         }
         // update player 
