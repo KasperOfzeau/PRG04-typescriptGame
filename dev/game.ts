@@ -54,7 +54,8 @@ class Game {
             for(let e of this.enemies) {
                 let hit = this.checkCollision(b.getRectangle(), e.getRectangle());
                 if(hit) {
-                    console.log("Bullet collision with enemy")
+                    e.killEnemy();
+                    b.removeBullet();
                 }
             }
         }
