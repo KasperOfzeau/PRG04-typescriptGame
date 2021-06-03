@@ -20,5 +20,8 @@ export class Bullet {
         }
         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
+    getRectangle() {
+        return this.div.getBoundingClientRect();
+    }
 }
 //# sourceMappingURL=bullet.js.map

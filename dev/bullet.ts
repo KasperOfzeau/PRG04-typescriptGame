@@ -31,4 +31,8 @@ export class Bullet {
         // Draw the bullet on the right coordinate (x, y)
         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
       }
+
+      public getRectangle() {
+        return this.div.getBoundingClientRect();
+    }
 }
