@@ -14,7 +14,7 @@ body {
           animation-timing-function: linear;
 }
 
-body cloud, body player, body bullet, body powerup {
+body cloud, body player, body bullet, body powerup, body enemy {
   position: absolute;
   display: block;
   -webkit-box-sizing: border-box;
@@ -35,6 +35,13 @@ body bullet {
   background-size: contain;
   width: 60px;
   height: 40px;
+  z-index: 999;
+}
+
+body enemy {
+  background-size: contain;
+  width: 100px;
+  height: 100px;
   z-index: 999;
 }
 

@@ -8,7 +8,7 @@ body {
     animation-direction: alternate;
     animation-timing-function: linear;
 
-    cloud, player, bullet, powerup {
+    cloud, player, bullet, powerup, enemy {
       position: absolute;
       display: block;
       box-sizing: border-box;
@@ -27,6 +27,12 @@ body {
         background-size: contain;
         width:60px; height: 40px;
         z-index: 999;
+    }
+
+    enemy {
+      background-size: contain;
+      width:100px; height: 100px;
+      z-index: 999;
     }
     
     cloud {
