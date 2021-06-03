@@ -32,6 +32,11 @@ export class Bullet {
         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
       }
 
+    public removeBullet() {
+        // Delete Bullet
+        this.div.remove();
+    }
+
       public getRectangle() {
         return this.div.getBoundingClientRect();
     }

@@ -20,6 +20,9 @@ export class Bullet {
         }
         this.div.style.transform = `translate(${this.x}px, ${this.y}px)`;
     }
+    removeBullet() {
+        this.div.remove();
+    }
     getRectangle() {
         return this.div.getBoundingClientRect();
     }
