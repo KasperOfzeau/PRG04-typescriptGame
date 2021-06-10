@@ -6,7 +6,7 @@ export class Powerup extends CollisionGameObject {
         this.create();
     }
     create() {
-        this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
+        this.x = window.innerWidth + 50;
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
         this.xspeed = 6;
     }
@@ -18,7 +18,8 @@ export class Powerup extends CollisionGameObject {
         }
         super.update();
     }
-    setPowerup() {
+    removePowerup() {
+        this.div.remove();
     }
 }
 //# sourceMappingURL=powerup.js.map

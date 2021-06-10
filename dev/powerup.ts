@@ -2,8 +2,6 @@ import { CollisionGameObject } from "./collisiongameobject.js";
 
 export class Powerup extends CollisionGameObject {
 
-    private name : string;
-
     constructor(tagName : string) {
         super(tagName);
         console.log("Powerup was created");
@@ -11,15 +9,15 @@ export class Powerup extends CollisionGameObject {
         this.create();
     }
 
-    private create() {
+    private create() : void {
         // Generate a random y and x value within the height of the viewport
-        this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
+        this.x = window.innerWidth + 50;
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
 
         this.xspeed = 6;
     }   
 
-    public update() {
+    public update() : void {
         // Move the cloud (x-value) to the left. 
         this.x -= this.xspeed;
         // Check if the cloud is completely outside the screen (left side)
@@ -33,7 +31,7 @@ export class Powerup extends CollisionGameObject {
         super.update();
     }
 
-    public setPowerup() {
-
+    public removePowerup() : void {
+        this.div.remove();
     }
 }
