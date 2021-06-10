@@ -1,3 +1,6 @@
+/* fonts */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+
 body {
     overflow:hidden;
     margin:0px; padding:0px;
@@ -44,6 +47,16 @@ body {
       width:60px; height: 40px;
       background-color: yellow;
       z-index: 999;
+    }
+
+    .gameover {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1000;
+      font-size: 100px;
+      font-family: 'Raleway', sans-serif;
     }
 }
 
