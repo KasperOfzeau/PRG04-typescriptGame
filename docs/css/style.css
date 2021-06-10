@@ -25,7 +25,6 @@ body cloud, body player, body bullet, body powerup, body enemy {
 }
 
 body player {
-  background-image: url(../images/pigeon.png);
   background-size: contain;
   width: 100px;
   height: 80px;
