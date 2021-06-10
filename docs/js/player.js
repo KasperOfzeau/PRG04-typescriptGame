@@ -26,7 +26,10 @@ export class Player extends CollisionGameObject {
     setLive() {
         if (this.lives != 0) {
             this.lives -= 1;
-            console.log(this.lives);
+        }
+        if (this.lives === 1) {
+            const oneLifeLeft = new Audio('./sounds/oneLifeLeft.wav');
+            oneLifeLeft.play();
         }
     }
     getLives() {
