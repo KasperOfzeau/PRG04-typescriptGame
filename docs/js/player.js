@@ -5,6 +5,7 @@ export class Player extends CollisionGameObject {
         super(tagName);
         this.yspeed = 0;
         this.bullets = [];
+        this.lives = 3;
         console.log("Player was created");
         window.addEventListener("keydown", (e) => this.onKeyDown(e));
         window.addEventListener("keyup", (e) => this.onKeyUp(e));
@@ -19,6 +20,15 @@ export class Player extends CollisionGameObject {
         this.y += this.yspeed;
         super.update();
     }
+    setLive() {
+        if (this.lives != 0) {
+            this.lives -= 1;
+            console.log(this.lives);
+        }
+    }
+    getLives() {
+        return this.lives;
+    }
     onKeyDown(e) {
         switch (e.key.toUpperCase()) {
             case "W":
@@ -29,9 +39,6 @@ export class Player extends CollisionGameObject {
             case "ARROWDOWN":
                 this.yspeed = 5;
                 break;
-            case " ":
-                this.bullets.push(new Bullet());
-                break;
         }
     }
     onKeyUp(e) {
@@ -41,6 +48,9 @@ export class Player extends CollisionGameObject {
             case "ARROWUP":
             case "ARROWDOWN":
                 this.yspeed = 0;
+                break;
+            case " ":
+                this.bullets.push(new Bullet());
                 break;
         }
     }

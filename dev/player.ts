@@ -5,6 +5,7 @@ export class Player extends CollisionGameObject {
 
     private yspeed : number = 0;
     public bullets : Bullet[] = [];
+    private lives : number = 3;
 
     constructor(tagName : string) {
         super(tagName);
@@ -16,16 +17,27 @@ export class Player extends CollisionGameObject {
         this.create();
     }
 
-    private create() {
+    private create() : void {
         this.div.classList.add("player");
         // Generate a random y value within the height of the viewport
         this.x = 100;
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
     }
 
-    public update() {
-        this.y += this.yspeed
+    public update() : void {
+        this.y += this.yspeed;
         super.update();
+    }
+
+    public setLive() : void {
+        if(this.lives != 0) {
+            this.lives -= 1; 
+            console.log(this.lives)
+        }
+    }
+
+    public getLives() : number {
+        return this.lives;
     }
 
     private onKeyDown(e: KeyboardEvent): void {
@@ -38,9 +50,6 @@ export class Player extends CollisionGameObject {
             case "ARROWDOWN":
                 this.yspeed = 5
                 break
-            case " ":
-                this.bullets.push(new Bullet());
-                break
         }
     }
 
@@ -52,6 +61,9 @@ export class Player extends CollisionGameObject {
             case "ARROWDOWN":
                 this.yspeed = 0
                 break
+            case " ":
+                this.bullets.push(new Bullet());
+                    break
         }
     }
 }
