@@ -1,5 +1,5 @@
 import { Bullet } from "./bullet.js";
-import { CollisionGameObject } from "./CollisionGameObject.js";
+import { CollisionGameObject } from "./collisiongameobject.js";
 export class Player extends CollisionGameObject {
     constructor(tagName) {
         super(tagName);
