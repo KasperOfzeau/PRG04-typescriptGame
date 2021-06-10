@@ -35,7 +35,6 @@ class Game {
 
     private gameLoop() {
         if(this.player.getLives() != 0) {
-            console.log(this.player.getLives())
             // update the clouds
             for(let c of this.clouds) {
                 c.update();
@@ -77,8 +76,13 @@ class Game {
                     this.player.setShield(); 
                     p.removePowerup();
 
+                    const shieldActivated = new Audio('./sounds/shieldActivated.wav');
+                    shieldActivated.play();
+
                     setTimeout(() => {
                         this.player.setShield();
+                        const shieldDown = new Audio('./sounds/shieldDown.wav');
+                        shieldDown.play();
                         setTimeout(() => {
                             this.powerups.push(new Powerup("powerup"));
                         }, Math.floor(Math.random() * (100000 - 15000) + 15000));
@@ -96,6 +100,9 @@ class Game {
 
             gameOverTitle.innerText = "Game Over";
             gameOverTitle.classList.add("gameover");
+
+            const gameOver = new Audio('./sounds/gameOver.wav');
+            gameOver.play();
         }
     }
 
