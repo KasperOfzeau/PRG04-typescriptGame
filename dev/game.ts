@@ -32,48 +32,59 @@ class Game {
     }
 
     private gameLoop() {
-        // update the clouds
-        for(let c of this.clouds) {
-            c.update();
-        }
-        // update the enemies
-        for(let e of this.enemies) {
-            e.update();
-
-            // check collision with player
-            let hit = this.checkCollision(e.getRectangle(), this.player.getRectangle());
-            if(hit) {
-                console.log("Enemy collision with player")
+        if(this.player.getLives() != 0) {
+            console.log(this.player.getLives())
+            // update the clouds
+            for(let c of this.clouds) {
+                c.update();
             }
-        }
-        // update bullets
-        for (let b of this.player.bullets) {
-            b.update();
-
-            // Check collision with enemies
+            // update the enemies
             for(let e of this.enemies) {
-                let hit = this.checkCollision(b.getRectangle(), e.getRectangle());
+                e.update();
+
+                // check collision with player
+                let hit = this.checkCollision(e.getRectangle(), this.player.getRectangle());
                 if(hit) {
+                    this.player.setLive();
                     e.killEnemy();
-                    b.removeBullet();
                 }
             }
-        }
-        // loop trough powerups
-        for (let p of this.powerups) {
-            // update powerups
-            p.update();
+            // update bullets
+            for (let b of this.player.bullets) {
+                b.update();
 
-            // check collision with powerups
-            let hit = this.checkCollision(p.getRectangle(), this.player.getRectangle());
-            if(hit) {
-                console.log("player collision with powerup")
+                // Check collision with enemies
+                for(let e of this.enemies) {
+                    let hit = this.checkCollision(b.getRectangle(), e.getRectangle());
+                    if(hit) {
+                        e.killEnemy();
+                        b.removeBullet();
+                    }
+                }
             }
-        }
-        // update player 
-        this.player.update();
+            // loop trough powerups
+            for (let p of this.powerups) {
+                // update powerups
+                p.update();
 
-        requestAnimationFrame(() => this.gameLoop());
+                // check collision with powerups
+                let hit = this.checkCollision(p.getRectangle(), this.player.getRectangle());
+                if(hit) {
+                    console.log("player collision with powerup")
+                }
+            }
+            // update player 
+            this.player.update();
+
+            requestAnimationFrame(() => this.gameLoop());
+        } else {
+            let game = document.querySelector("body");
+            let gameOverTitle = document.createElement("h1");
+            game?.appendChild(gameOverTitle);
+
+            gameOverTitle.innerText = "Game Over";
+            gameOverTitle.classList.add("gameover");
+        }
     }
 
     private checkCollision(a: ClientRect, b: ClientRect) {

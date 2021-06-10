@@ -19,35 +19,46 @@ class Game {
         this.gameLoop();
     }
     gameLoop() {
-        for (let c of this.clouds) {
-            c.update();
-        }
-        for (let e of this.enemies) {
-            e.update();
-            let hit = this.checkCollision(e.getRectangle(), this.player.getRectangle());
-            if (hit) {
-                console.log("Enemy collision with player");
+        if (this.player.getLives() != 0) {
+            console.log(this.player.getLives());
+            for (let c of this.clouds) {
+                c.update();
             }
-        }
-        for (let b of this.player.bullets) {
-            b.update();
             for (let e of this.enemies) {
-                let hit = this.checkCollision(b.getRectangle(), e.getRectangle());
+                e.update();
+                let hit = this.checkCollision(e.getRectangle(), this.player.getRectangle());
                 if (hit) {
+                    this.player.setLive();
                     e.killEnemy();
-                    b.removeBullet();
                 }
             }
-        }
-        for (let p of this.powerups) {
-            p.update();
-            let hit = this.checkCollision(p.getRectangle(), this.player.getRectangle());
-            if (hit) {
-                console.log("player collision with powerup");
+            for (let b of this.player.bullets) {
+                b.update();
+                for (let e of this.enemies) {
+                    let hit = this.checkCollision(b.getRectangle(), e.getRectangle());
+                    if (hit) {
+                        e.killEnemy();
+                        b.removeBullet();
+                    }
+                }
             }
+            for (let p of this.powerups) {
+                p.update();
+                let hit = this.checkCollision(p.getRectangle(), this.player.getRectangle());
+                if (hit) {
+                    console.log("player collision with powerup");
+                }
+            }
+            this.player.update();
+            requestAnimationFrame(() => this.gameLoop());
         }
-        this.player.update();
-        requestAnimationFrame(() => this.gameLoop());
+        else {
+            let game = document.querySelector("body");
+            let gameOverTitle = document.createElement("h1");
+            game === null || game === void 0 ? void 0 : game.appendChild(gameOverTitle);
+            gameOverTitle.innerText = "Game Over";
+            gameOverTitle.classList.add("gameover");
+        }
     }
     checkCollision(a, b) {
         return (a.left <= b.right &&
