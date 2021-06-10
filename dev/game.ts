@@ -25,8 +25,10 @@ class Game {
             this.enemies.push(new Enemy("enemy"));
         }
 
-        // Create powerups
-        this.powerups.push(new Powerup("powerup"));
+        // Create powerup on random time
+        setTimeout(() => {
+            this.powerups.push(new Powerup("powerup"));
+        }, Math.floor(Math.random() * (25000 - 15000) + 15000));
 
         this.gameLoop();
     }
@@ -45,8 +47,10 @@ class Game {
                 // check collision with player
                 let hit = this.checkCollision(e.getRectangle(), this.player.getRectangle());
                 if(hit) {
-                    this.player.setLive();
                     e.killEnemy();
+                    if(this.player.getShield() === false) {
+                        this.player.setLive();
+                    }
                 }
             }
             // update bullets
@@ -70,7 +74,15 @@ class Game {
                 // check collision with powerups
                 let hit = this.checkCollision(p.getRectangle(), this.player.getRectangle());
                 if(hit) {
-                    console.log("player collision with powerup")
+                    this.player.setShield(); 
+                    p.removePowerup();
+
+                    setTimeout(() => {
+                        this.player.setShield();
+                        setTimeout(() => {
+                            this.powerups.push(new Powerup("powerup"));
+                        }, Math.floor(Math.random() * (100000 - 15000) + 15000));
+                    }, 15000);
                 }
             }
             // update player 

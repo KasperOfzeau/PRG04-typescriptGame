@@ -15,7 +15,9 @@ class Game {
         for (let i = 0; i < 5; i++) {
             this.enemies.push(new Enemy("enemy"));
         }
-        this.powerups.push(new Powerup("powerup"));
+        setTimeout(() => {
+            this.powerups.push(new Powerup("powerup"));
+        }, Math.floor(Math.random() * (25000 - 15000) + 15000));
         this.gameLoop();
     }
     gameLoop() {
@@ -28,8 +30,10 @@ class Game {
                 e.update();
                 let hit = this.checkCollision(e.getRectangle(), this.player.getRectangle());
                 if (hit) {
-                    this.player.setLive();
                     e.killEnemy();
+                    if (this.player.getShield() === false) {
+                        this.player.setLive();
+                    }
                 }
             }
             for (let b of this.player.bullets) {
@@ -46,7 +50,14 @@ class Game {
                 p.update();
                 let hit = this.checkCollision(p.getRectangle(), this.player.getRectangle());
                 if (hit) {
-                    console.log("player collision with powerup");
+                    this.player.setShield();
+                    p.removePowerup();
+                    setTimeout(() => {
+                        this.player.setShield();
+                        setTimeout(() => {
+                            this.powerups.push(new Powerup("powerup"));
+                        }, Math.floor(Math.random() * (100000 - 15000) + 15000));
+                    }, 15000);
                 }
             }
             this.player.update();
