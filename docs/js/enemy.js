@@ -1,4 +1,4 @@
-import { CollisionGameObject } from "./CollisionGameObject.js";
+import { CollisionGameObject } from "./collisiongameobject.js";
 export class Enemy extends CollisionGameObject {
     constructor(tagName) {
         super(tagName);
