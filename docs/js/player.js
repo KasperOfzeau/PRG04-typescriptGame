@@ -6,6 +6,8 @@ export class Player extends CollisionGameObject {
         this.yspeed = 0;
         this.bullets = [];
         this.lives = 3;
+        this.shield = false;
+        this.skin = "url(./images/pigeon.png)";
         console.log("Player was created");
         window.addEventListener("keydown", (e) => this.onKeyDown(e));
         window.addEventListener("keyup", (e) => this.onKeyUp(e));
@@ -13,6 +15,7 @@ export class Player extends CollisionGameObject {
     }
     create() {
         this.div.classList.add("player");
+        this.div.style.backgroundImage = this.skin;
         this.x = 100;
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
     }
@@ -28,6 +31,21 @@ export class Player extends CollisionGameObject {
     }
     getLives() {
         return this.lives;
+    }
+    setShield() {
+        if (this.shield === false) {
+            this.shield = true;
+            this.skin = "url(./images/pigeon_with_shield.png)";
+            this.div.style.backgroundImage = this.skin;
+        }
+        else {
+            this.shield = false;
+            this.skin = "url(./images/pigeon.png)";
+            this.div.style.backgroundImage = this.skin;
+        }
+    }
+    getShield() {
+        return this.shield;
     }
     onKeyDown(e) {
         switch (e.key.toUpperCase()) {

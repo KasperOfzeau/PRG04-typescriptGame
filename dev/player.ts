@@ -6,6 +6,8 @@ export class Player extends CollisionGameObject {
     private yspeed : number = 0;
     public bullets : Bullet[] = [];
     private lives : number = 3;
+    private shield : boolean = false;
+    private skin : string = "url(./images/pigeon.png)";
 
     constructor(tagName : string) {
         super(tagName);
@@ -19,6 +21,7 @@ export class Player extends CollisionGameObject {
 
     private create() : void {
         this.div.classList.add("player");
+        this.div.style.backgroundImage = this.skin;
         // Generate a random y value within the height of the viewport
         this.x = 100;
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
@@ -38,6 +41,22 @@ export class Player extends CollisionGameObject {
 
     public getLives() : number {
         return this.lives;
+    }
+
+    public setShield() : void {
+        if(this.shield === false) {
+            this.shield = true; 
+            this.skin = "url(./images/pigeon_with_shield.png)";
+            this.div.style.backgroundImage = this.skin;
+        } else {
+            this.shield = false; 
+            this.skin = "url(./images/pigeon.png)";
+            this.div.style.backgroundImage = this.skin;
+        }
+    }
+
+    public getShield() : boolean {
+        return this.shield;
     }
 
     private onKeyDown(e: KeyboardEvent): void {
