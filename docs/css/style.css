@@ -59,6 +59,50 @@ body powerup {
   z-index: 999;
 }
 
+body gamestats {
+  position: absolute;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.384);
+  z-index: 1000;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  gap: 0px 0px;
+      grid-template-areas: "Score Lives .";
+}
+
+body gamestats score {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: Score;
+}
+
+body gamestats lives {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: Lives;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+body gamestats lives life {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  margin: 0px 12px;
+}
+
 body .gameover {
   position: absolute;
   top: 40%;
