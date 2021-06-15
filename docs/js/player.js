@@ -21,6 +21,12 @@ export class Player extends CollisionGameObject {
     }
     update() {
         this.y += this.yspeed;
+        if (this.y < 50) {
+            this.y = 50;
+        }
+        if (this.y > window.innerHeight - this.div.clientHeight) {
+            this.y = window.innerHeight - this.div.clientHeight;
+        }
         super.update();
     }
     setLive() {
