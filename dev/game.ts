@@ -3,15 +3,23 @@ import { Enemy } from "./enemy.js";
 import { Player } from "./player.js";
 import { Powerup } from "./powerup.js";
 
+let game = document.querySelector("body");
+
 class Game {
 
     private clouds : Cloud[] = [];
     private player : Player;
     private enemies : Enemy[] = [];
     private powerups : Powerup[] = [];
+    private gameStats : HTMLElement;
 
     constructor() {
         console.log("Game was created!");
+
+        // Create gameStats menu
+        this.gameStats = document.createElement("gamestats");
+        game?.appendChild(this.gameStats);
+
         // Create clouds
         for (let i = 0; i < 30; i++) {
             this.clouds.push(new Cloud("cloud"));
@@ -29,6 +37,19 @@ class Game {
         setTimeout(() => {
             this.powerups.push(new Powerup("powerup"));
         }, Math.floor(Math.random() * (25000 - 15000) + 15000));
+
+        // Create display lives holder 
+        let liveHolder = document.createElement("lives");
+        for(let i = 0; i < this.player.getLives(); i++) {
+            let life = document.createElement("life");
+            life.style.backgroundImage = "url(./images/life.png)";
+            liveHolder.appendChild(life);
+        }
+        this.gameStats?.appendChild(liveHolder);
+
+        // Create display score 
+        let scoreHolder = document.createElement("score");
+        this.gameStats?.appendChild(scoreHolder);
 
         this.gameLoop();
     }
@@ -49,6 +70,14 @@ class Game {
                     e.killEnemy();
                     if(this.player.getShield() === false) {
                         this.player.setLive();
+                    }
+                     // Display lives 
+                    let liveHolder = document.querySelector("lives");
+                    liveHolder!.innerHTML = "";
+                    for(let i = 0; i < this.player.getLives(); i++) {
+                        let life = document.createElement("life");
+                        life.style.backgroundImage = "url(./images/life.png)";
+                        liveHolder!.appendChild(life);
                     }
                 }
             }
@@ -94,7 +123,6 @@ class Game {
 
             requestAnimationFrame(() => this.gameLoop());
         } else {
-            let game = document.querySelector("body");
             let gameOverTitle = document.createElement("h1");
             game?.appendChild(gameOverTitle);
 

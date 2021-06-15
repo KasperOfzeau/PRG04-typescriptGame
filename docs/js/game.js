@@ -2,12 +2,16 @@ import { Cloud } from "./cloud.js";
 import { Enemy } from "./enemy.js";
 import { Player } from "./player.js";
 import { Powerup } from "./powerup.js";
+let game = document.querySelector("body");
 class Game {
     constructor() {
+        var _a, _b;
         this.clouds = [];
         this.enemies = [];
         this.powerups = [];
         console.log("Game was created!");
+        this.gameStats = document.createElement("gamestats");
+        game === null || game === void 0 ? void 0 : game.appendChild(this.gameStats);
         for (let i = 0; i < 30; i++) {
             this.clouds.push(new Cloud("cloud"));
         }
@@ -18,6 +22,15 @@ class Game {
         setTimeout(() => {
             this.powerups.push(new Powerup("powerup"));
         }, Math.floor(Math.random() * (25000 - 15000) + 15000));
+        let liveHolder = document.createElement("lives");
+        for (let i = 0; i < this.player.getLives(); i++) {
+            let life = document.createElement("life");
+            life.style.backgroundImage = "url(./images/life.png)";
+            liveHolder.appendChild(life);
+        }
+        (_a = this.gameStats) === null || _a === void 0 ? void 0 : _a.appendChild(liveHolder);
+        let scoreHolder = document.createElement("score");
+        (_b = this.gameStats) === null || _b === void 0 ? void 0 : _b.appendChild(scoreHolder);
         this.gameLoop();
     }
     gameLoop() {
@@ -32,6 +45,13 @@ class Game {
                     e.killEnemy();
                     if (this.player.getShield() === false) {
                         this.player.setLive();
+                    }
+                    let liveHolder = document.querySelector("lives");
+                    liveHolder.innerHTML = "";
+                    for (let i = 0; i < this.player.getLives(); i++) {
+                        let life = document.createElement("life");
+                        life.style.backgroundImage = "url(./images/life.png)";
+                        liveHolder.appendChild(life);
                     }
                 }
             }
@@ -67,7 +87,6 @@ class Game {
             requestAnimationFrame(() => this.gameLoop());
         }
         else {
-            let game = document.querySelector("body");
             let gameOverTitle = document.createElement("h1");
             game === null || game === void 0 ? void 0 : game.appendChild(gameOverTitle);
             gameOverTitle.innerText = "Game Over";
