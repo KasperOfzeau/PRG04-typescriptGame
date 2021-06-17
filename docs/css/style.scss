@@ -4,6 +4,7 @@
 body {
     overflow:hidden;
     margin:0px; padding:0px;
+    font-family: 'Raleway', sans-serif;
 
     animation-name: backgroundColorPalette;
     animation-duration: 30s;
@@ -43,8 +44,9 @@ body {
     }
 
     powerup {
-      width:60px; height: 40px;
-      background-color: yellow;
+      background-size: contain;
+      width:60px; height: 60px;
+      background-image: url(../images/powerup.png);
       z-index: 999;
     }
 
@@ -62,6 +64,14 @@ body {
 
       score {
         grid-area: Score; 
+        text-align: contain;
+        color: #fff;
+        font-size: 18px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);  
+        transform: translate(-50%, -50%);
       }
 
       lives {
@@ -84,14 +94,21 @@ body {
       }
     }
 
-    .gameover {
+    .gameover, .yourscore {
       position: absolute;
-      top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: 1000;
+    }
+
+    .gameover {
+      top: 40%;
       font-size: 100px;
-      font-family: 'Raleway', sans-serif;
+    }
+
+    .yourscore {
+      top: 50%;
+      font-size: 50px;
     }
 }
 

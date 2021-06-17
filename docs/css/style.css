@@ -4,6 +4,7 @@ body {
   overflow: hidden;
   margin: 0px;
   padding: 0px;
+  font-family: 'Raleway', sans-serif;
   -webkit-animation-name: backgroundColorPalette;
           animation-name: backgroundColorPalette;
   -webkit-animation-duration: 30s;
@@ -53,9 +54,10 @@ body cloud {
 }
 
 body powerup {
+  background-size: contain;
   width: 60px;
-  height: 40px;
-  background-color: yellow;
+  height: 60px;
+  background-image: url(../images/powerup.png);
   z-index: 999;
 }
 
@@ -79,6 +81,14 @@ body gamestats score {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: Score;
+  text-align: contain;
+  color: #fff;
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 body gamestats lives {
@@ -103,15 +113,22 @@ body gamestats lives life {
   margin: 0px 12px;
 }
 
-body .gameover {
+body .gameover, body .yourscore {
   position: absolute;
-  top: 40%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: 1000;
+}
+
+body .gameover {
+  top: 40%;
   font-size: 100px;
-  font-family: 'Raleway', sans-serif;
+}
+
+body .yourscore {
+  top: 50%;
+  font-size: 50px;
 }
 
 @-webkit-keyframes backgroundColorPalette {
