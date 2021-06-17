@@ -12,6 +12,7 @@ class Game {
     private enemies : Enemy[] = [];
     private powerups : Powerup[] = [];
     private gameStats : HTMLElement;
+    private gameScore : number = 0;
 
     constructor() {
         console.log("Game was created!");
@@ -50,6 +51,8 @@ class Game {
         // Create display score 
         let scoreHolder = document.createElement("score");
         this.gameStats?.appendChild(scoreHolder);
+        let scoreString = `Score: 0`;
+        scoreHolder!.innerHTML = scoreString;
 
         this.gameLoop();
     }
@@ -91,6 +94,12 @@ class Game {
                     if(hit) {
                         e.killEnemy();
                         b.removeBullet();
+                        this.gameScore += 50;
+                        console.log(this.gameScore)
+                        // Display score 
+                        let scoreHolder = document.querySelector("score");
+                        let scoreString = `Score: ${this.gameScore}`;
+                        scoreHolder!.innerHTML = scoreString;
                     }
                 }
             }
@@ -124,10 +133,14 @@ class Game {
             requestAnimationFrame(() => this.gameLoop());
         } else {
             let gameOverTitle = document.createElement("h1");
+            let yourScore = document.createElement("h2");
             game?.appendChild(gameOverTitle);
+            game?.appendChild(yourScore);
 
             gameOverTitle.innerText = "Game Over";
+            yourScore.innerText = `Your score: ${this.gameScore}`;
             gameOverTitle.classList.add("gameover");
+            yourScore.classList.add("yourscore");
 
             const gameOver = new Audio('./sounds/gameOver.wav');
             gameOver.play();

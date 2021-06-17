@@ -9,6 +9,7 @@ class Game {
         this.clouds = [];
         this.enemies = [];
         this.powerups = [];
+        this.gameScore = 0;
         console.log("Game was created!");
         this.gameStats = document.createElement("gamestats");
         game === null || game === void 0 ? void 0 : game.appendChild(this.gameStats);
@@ -31,6 +32,8 @@ class Game {
         (_a = this.gameStats) === null || _a === void 0 ? void 0 : _a.appendChild(liveHolder);
         let scoreHolder = document.createElement("score");
         (_b = this.gameStats) === null || _b === void 0 ? void 0 : _b.appendChild(scoreHolder);
+        let scoreString = `Score: 0`;
+        scoreHolder.innerHTML = scoreString;
         this.gameLoop();
     }
     gameLoop() {
@@ -62,6 +65,11 @@ class Game {
                     if (hit) {
                         e.killEnemy();
                         b.removeBullet();
+                        this.gameScore += 50;
+                        console.log(this.gameScore);
+                        let scoreHolder = document.querySelector("score");
+                        let scoreString = `Score: ${this.gameScore}`;
+                        scoreHolder.innerHTML = scoreString;
                     }
                 }
             }
@@ -88,9 +96,13 @@ class Game {
         }
         else {
             let gameOverTitle = document.createElement("h1");
+            let yourScore = document.createElement("h2");
             game === null || game === void 0 ? void 0 : game.appendChild(gameOverTitle);
+            game === null || game === void 0 ? void 0 : game.appendChild(yourScore);
             gameOverTitle.innerText = "Game Over";
+            yourScore.innerText = `Your score: ${this.gameScore}`;
             gameOverTitle.classList.add("gameover");
+            yourScore.classList.add("yourscore");
             const gameOver = new Audio('./sounds/gameOver.wav');
             gameOver.play();
         }
