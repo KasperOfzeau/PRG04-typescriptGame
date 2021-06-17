@@ -7,7 +7,7 @@ export class Player extends CollisionGameObject {
         this.bullets = [];
         this.lives = 3;
         this.shield = false;
-        this.skin = "url(./images/pigeon.png)";
+        this.skin = "url(./images/pigeon.gif)";
         console.log("Player was created");
         window.addEventListener("keydown", (e) => this.onKeyDown(e));
         window.addEventListener("keyup", (e) => this.onKeyUp(e));
@@ -44,12 +44,12 @@ export class Player extends CollisionGameObject {
     setShield() {
         if (this.shield === false) {
             this.shield = true;
-            this.skin = "url(./images/pigeon_with_shield.png)";
+            this.skin = "url(./images/pigeon_with_shield.gif)";
             this.div.style.backgroundImage = this.skin;
         }
         else {
             this.shield = false;
-            this.skin = "url(./images/pigeon.png)";
+            this.skin = "url(./images/pigeon.gif)";
             this.div.style.backgroundImage = this.skin;
         }
     }

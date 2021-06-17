@@ -7,7 +7,7 @@ export class Player extends CollisionGameObject {
     public bullets : Bullet[] = [];
     private lives : number = 3;
     private shield : boolean = false;
-    private skin : string = "url(./images/pigeon.png)";
+    private skin : string = "url(./images/pigeon.gif)";
 
     constructor(tagName : string) {
         super(tagName);
@@ -57,11 +57,11 @@ export class Player extends CollisionGameObject {
     public setShield() : void {
         if(this.shield === false) {
             this.shield = true; 
-            this.skin = "url(./images/pigeon_with_shield.png)";
+            this.skin = "url(./images/pigeon_with_shield.gif)";
             this.div.style.backgroundImage = this.skin;
         } else {
             this.shield = false; 
-            this.skin = "url(./images/pigeon.png)";
+            this.skin = "url(./images/pigeon.gif)";
             this.div.style.backgroundImage = this.skin;
         }
     }
