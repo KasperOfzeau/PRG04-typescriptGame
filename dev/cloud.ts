@@ -24,11 +24,12 @@ export class Cloud extends GameObject {
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
 
         // generate random scale size 
-        this.scale = Math.random() * (5 - 1) + 1;
+        this.scale = Math.random() * (7 - 2) + 2;
 
         // Set z-index based on sclae
         let zIndex = Math.floor(this.scale).toString();
         this.div.style.zIndex = zIndex;
+        if(this.scale > 6.5) {this.div.style.zIndex = "1001";}
 
         // Set speed based on size
         this.xspeed = this.scale / 2;
@@ -38,7 +39,7 @@ export class Cloud extends GameObject {
         // Move the cloud (x-value) to the left. 
         this.x -= this.xspeed;
         // Check if the cloud is completely outside the screen (left side)
-        if(this.x + this.div.clientWidth * 2 < 0) {
+        if(this.x + this.div.clientWidth * 3 < 0) {
             // Place the cloud on the right side outside the screen
             this.x = window.innerWidth + this.div.clientWidth;
             // Generate a random y-value
