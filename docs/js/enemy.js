@@ -8,11 +8,11 @@ export class Enemy extends CollisionGameObject {
     create() {
         this.skin = Math.floor(Math.random() * (2 - 0) + 0);
         let cloudImages = ["url(./images/owl.gif)",
-            "url(./images/falcon.png)"];
+            "url(./images/falcon.gif)"];
         this.div.style.backgroundImage = cloudImages[this.skin];
         this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
-        this.xspeed = 4;
+        this.xspeed = Math.floor(Math.random() * (9 - 4) + 4);
     }
     update() {
         this.x -= this.xspeed;

@@ -14,14 +14,14 @@ export class Enemy extends CollisionGameObject {
         // Generate random skin 
         this.skin = Math.floor(Math.random() * (2 - 0) + 0);
         let cloudImages = ["url(./images/owl.gif)",
-                           "url(./images/falcon.png)"];
+                           "url(./images/falcon.gif)"];
         this.div.style.backgroundImage = cloudImages[this.skin];
 
         // Generate a random x and y value within de width and height of the viewport
         this.x = Math.floor(Math.random() * (window.innerWidth - this.div.clientWidth));
         this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
 
-        this.xspeed = 4;
+        this.xspeed = Math.floor(Math.random() * (9 - 4) + 4);
     }
 
     public update() {
