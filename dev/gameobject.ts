@@ -7,6 +7,6 @@ export class GameObject {
 
     constructor(tagName : string) {
         this.div = document.createElement(tagName);
-        document.body.appendChild(this.div);
+        document.querySelector("game")?.appendChild(this.div);
     }
 }
