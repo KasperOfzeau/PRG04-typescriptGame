@@ -12,7 +12,7 @@ export class Bullet {
 
     private create() {
         this.div = document.createElement("bullet");
-        document.body.appendChild(this.div);
+        document.querySelector("game")?.appendChild(this.div);
 
         // Generate a random y value within the height of the viewport
         this.x = 100;

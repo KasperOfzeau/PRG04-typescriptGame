@@ -6,8 +6,9 @@ export class Bullet {
         this.create();
     }
     create() {
+        var _a;
         this.div = document.createElement("bullet");
-        document.body.appendChild(this.div);
+        (_a = document.querySelector("game")) === null || _a === void 0 ? void 0 : _a.appendChild(this.div);
         this.x = 100;
         let player = document.querySelector(".player").getBoundingClientRect();
         let playery = player.top;
