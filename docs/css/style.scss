@@ -2,114 +2,153 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
 
 body {
-    overflow:hidden;
-    margin:0px; padding:0px;
-    font-family: 'Raleway', sans-serif;
-
-    animation-name: backgroundColorPalette;
-    animation-duration: 30s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: linear;
-
-    cloud, player, bullet, powerup, enemy {
-      position: absolute;
-      display: block;
-      box-sizing: border-box;
-      background-repeat: no-repeat;
-    }
+  overflow:hidden;
+  padding: 0;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
   
-    player {
-        background-size: contain;
-        width:125px; height: 100px;
-        z-index: 1000;
-    }
+  startscreen {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
     
-    bullet {
-      background-image: url(../images/bullet.png);
-        background-size: contain;
-        width:60px; height: 40px;
-        z-index: 999;
-    }
-
-    enemy {
-      background-size: contain;
-      width:100px; height: 100px;
-      z-index: 999;
-    }
-    
-    cloud {
-        background-size: contain;
-        width:130px; height: 110px;
-    }
-
-    powerup {
-      background-size: contain;
-      width:60px; height: 60px;
-      background-image: url(../images/powerup.png);
-      z-index: 999;
-    }
-
-    gamestats {
+    div {
       position: absolute;
-      height: 50px;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.384);
-      z-index: 1000;
-      display: grid; 
-      grid-template-columns: 1fr 1fr 1fr; 
-      grid-template-rows: 1fr; 
-      gap: 0px 0px; 
-      grid-template-areas: "Score Lives ."; 
-
-      score {
-        grid-area: Score; 
-        text-align: contain;
-        color: #fff;
-        font-size: 18px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);  
-        transform: translate(-50%, -50%);
+      top: 40%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);  
+      transform: translate(-50%, -50%);
+      h1 {
+        font-size: 50px;
+        text-align: center;
       }
 
-      lives {
-        grid-area: Lives; 
+      button {  
+        margin: auto;
+        display: block;
+        font-size: 24px;
+        font-family: 'Raleway', sans-serif;
+        margin-top: 10px;
+        background-color: green;
+        color: white;
+        padding: 15px 20px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  game {
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      margin:0px; 
+      padding:0px;
+
+      animation-name: backgroundColorPalette;
+      animation-duration: 30s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: linear;
+
+      cloud, bigcloud, player, bullet, powerup, enemy {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translate(-50%, -50%);  
-        transform: translate(-50%, -50%);   
-        
-        life {
-          display: inline-block;
-          box-sizing: border-box;
-          background-repeat: no-repeat;
+        display: block;
+        box-sizing: border-box;
+        background-repeat: no-repeat;
+      }
+    
+      player {
           background-size: contain;
-          width: 30px;
-          height: 30px;
-          margin: 0px 12px;
+          width:125px; height: 100px;
+          z-index: 1000;
+      }
+      
+      bullet {
+        background-image: url(../images/bullet.png);
+          background-size: contain;
+          width:60px; height: 40px;
+          z-index: 999;
+      }
+
+      enemy {
+        background-size: contain;
+        width:100px; height: 100px;
+        z-index: 999;
+      }
+      
+      cloud, bigcloud {
+          background-size: contain;
+          width:130px; height: 110px;
+      }
+
+      powerup {
+        background-size: contain;
+        width:60px; height: 60px;
+        background-image: url(../images/powerup.png);
+        z-index: 999;
+      }
+
+      gamestats {
+        position: absolute;
+        height: 50px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.384);
+        z-index: 1002;
+        display: grid; 
+        grid-template-columns: 1fr 1fr 1fr; 
+        grid-template-rows: 1fr; 
+        gap: 0px 0px; 
+        grid-template-areas: "Score Lives ."; 
+
+        score {
+          grid-area: Score; 
+          text-align: contain;
+          color: #fff;
+          font-size: 18px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);  
+          transform: translate(-50%, -50%);
+        }
+
+        lives {
+          grid-area: Lives; 
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);  
+          transform: translate(-50%, -50%);   
+          
+          life {
+            display: inline-block;
+            box-sizing: border-box;
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 30px;
+            height: 30px;
+            margin: 0px 12px;
+          }
         }
       }
-    }
 
-    .gameover, .yourscore {
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1000;
-    }
+      .gameover, .yourscore {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1002;
+      }
 
-    .gameover {
-      top: 40%;
-      font-size: 100px;
-    }
+      .gameover {
+        top: 40%;
+        font-size: 100px;
+      }
 
-    .yourscore {
-      top: 50%;
-      font-size: 50px;
-    }
+      .yourscore {
+        top: 50%;
+        font-size: 50px;
+      }
+  }
 }
 
 @keyframes backgroundColorPalette {

@@ -2,9 +2,48 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap");
 body {
   overflow: hidden;
+  padding: 0;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+body startscreen {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+}
+
+body startscreen div {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+body startscreen div h1 {
+  font-size: 50px;
+  text-align: center;
+}
+
+body startscreen div button {
+  margin: auto;
+  display: block;
+  font-size: 24px;
+  font-family: 'Raleway', sans-serif;
+  margin-top: 10px;
+  background-color: green;
+  color: white;
+  padding: 15px 20px;
+  cursor: pointer;
+}
+
+body game {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
   margin: 0px;
   padding: 0px;
-  font-family: 'Raleway', sans-serif;
   -webkit-animation-name: backgroundColorPalette;
           animation-name: backgroundColorPalette;
   -webkit-animation-duration: 30s;
@@ -17,7 +56,7 @@ body {
           animation-timing-function: linear;
 }
 
-body cloud, body player, body bullet, body powerup, body enemy {
+body game cloud, body game bigcloud, body game player, body game bullet, body game powerup, body game enemy {
   position: absolute;
   display: block;
   -webkit-box-sizing: border-box;
@@ -25,14 +64,14 @@ body cloud, body player, body bullet, body powerup, body enemy {
   background-repeat: no-repeat;
 }
 
-body player {
+body game player {
   background-size: contain;
   width: 125px;
   height: 100px;
   z-index: 1000;
 }
 
-body bullet {
+body game bullet {
   background-image: url(../images/bullet.png);
   background-size: contain;
   width: 60px;
@@ -40,20 +79,20 @@ body bullet {
   z-index: 999;
 }
 
-body enemy {
+body game enemy {
   background-size: contain;
   width: 100px;
   height: 100px;
   z-index: 999;
 }
 
-body cloud {
+body game cloud, body game bigcloud {
   background-size: contain;
   width: 130px;
   height: 110px;
 }
 
-body powerup {
+body game powerup {
   background-size: contain;
   width: 60px;
   height: 60px;
@@ -61,12 +100,12 @@ body powerup {
   z-index: 999;
 }
 
-body gamestats {
+body game gamestats {
   position: absolute;
   height: 50px;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.384);
-  z-index: 1000;
+  z-index: 1002;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr;
@@ -77,7 +116,7 @@ body gamestats {
       grid-template-areas: "Score Lives .";
 }
 
-body gamestats score {
+body game gamestats score {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: Score;
@@ -91,7 +130,7 @@ body gamestats score {
   transform: translate(-50%, -50%);
 }
 
-body gamestats lives {
+body game gamestats lives {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: Lives;
@@ -102,7 +141,7 @@ body gamestats lives {
   transform: translate(-50%, -50%);
 }
 
-body gamestats lives life {
+body game gamestats lives life {
   display: inline-block;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -113,20 +152,20 @@ body gamestats lives life {
   margin: 0px 12px;
 }
 
-body .gameover, body .yourscore {
+body game .gameover, body game .yourscore {
   position: absolute;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  z-index: 1000;
+  z-index: 1002;
 }
 
-body .gameover {
+body game .gameover {
   top: 40%;
   font-size: 100px;
 }
 
-body .yourscore {
+body game .yourscore {
   top: 50%;
   font-size: 50px;
 }
