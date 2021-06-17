@@ -13,20 +13,22 @@ export class StartScreen {
 
         this.game = game;
         
-        const text = document.createElement("div");
+        const holder = document.createElement("div");
+        this.element.appendChild(holder);
+
+        const text = document.createElement("h1");
         const btn = document.createElement("button");
+        holder.appendChild(text);
+        holder.appendChild(btn);
 
-        this.element.appendChild(text);
-        this.element.appendChild(btn);
-
-        text.innerText = "Robot Clicker";
+        text.innerText = "Pigeon Shooter";
         btn.innerText = "START GAME";
         
         btn.addEventListener("click", () => this.gotoGameScreen());
     }
 
     private gotoGameScreen(){
-        document.querySelector('startscreen')?.remove();
+        this.element.remove();
         this.game.showGameScreen();
     }
 
