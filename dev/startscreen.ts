@@ -21,7 +21,7 @@ export class StartScreen {
         holder.appendChild(text);
         holder.appendChild(btn);
 
-        text.innerText = "Pigeon Shooter";
+        text.innerText = "Pigeon War";
         btn.innerText = "START GAME";
         
         btn.addEventListener("click", () => this.gotoGameScreen());
