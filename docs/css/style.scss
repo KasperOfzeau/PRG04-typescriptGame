@@ -98,7 +98,19 @@ body {
         grid-template-columns: 1fr 1fr 1fr; 
         grid-template-rows: 1fr; 
         gap: 0px 0px; 
-        grid-template-areas: "Score Lives ."; 
+        grid-template-areas: "Name Lives Score"; 
+
+        name {
+          grid-area: Name; 
+          text-align: contain;
+          color: #fff;
+          font-size: 18px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);  
+          transform: translate(-50%, -50%);
+        }
 
         score {
           grid-area: Score; 

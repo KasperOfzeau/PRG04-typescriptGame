@@ -113,12 +113,26 @@ body game gamestats {
   -ms-grid-rows: 1fr;
       grid-template-rows: 1fr;
   gap: 0px 0px;
-      grid-template-areas: "Score Lives .";
+      grid-template-areas: "Name Lives Score";
+}
+
+body game gamestats name {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: Name;
+  text-align: contain;
+  color: #fff;
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 body game gamestats score {
   -ms-grid-row: 1;
-  -ms-grid-column: 1;
+  -ms-grid-column: 3;
   grid-area: Score;
   text-align: contain;
   color: #fff;
