@@ -21,6 +21,11 @@ export class GameScreen {
         this.gameStats = document.createElement("gamestats");
         game?.appendChild(this.gameStats);
 
+        // Create name title 
+        let title = document.createElement("name");
+        this.gameStats?.appendChild(title);
+        title.innerHTML = "Pigeon War";
+
         // Create clouds
         for (let i = 0; i < 30; i++) {
             this.clouds.push(new Cloud("cloud"));

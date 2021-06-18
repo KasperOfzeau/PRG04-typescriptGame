@@ -5,7 +5,7 @@ import { Powerup } from "./powerup.js";
 let game = document.querySelector("game");
 export class GameScreen {
     constructor() {
-        var _a, _b;
+        var _a, _b, _c;
         this.clouds = [];
         this.enemies = [];
         this.powerups = [];
@@ -13,6 +13,9 @@ export class GameScreen {
         console.log("Game was created!");
         this.gameStats = document.createElement("gamestats");
         game === null || game === void 0 ? void 0 : game.appendChild(this.gameStats);
+        let title = document.createElement("name");
+        (_a = this.gameStats) === null || _a === void 0 ? void 0 : _a.appendChild(title);
+        title.innerHTML = "Pigeon War";
         for (let i = 0; i < 30; i++) {
             this.clouds.push(new Cloud("cloud"));
         }
@@ -29,9 +32,9 @@ export class GameScreen {
             life.style.backgroundImage = "url(./images/life.png)";
             liveHolder.appendChild(life);
         }
-        (_a = this.gameStats) === null || _a === void 0 ? void 0 : _a.appendChild(liveHolder);
+        (_b = this.gameStats) === null || _b === void 0 ? void 0 : _b.appendChild(liveHolder);
         let scoreHolder = document.createElement("score");
-        (_b = this.gameStats) === null || _b === void 0 ? void 0 : _b.appendChild(scoreHolder);
+        (_c = this.gameStats) === null || _c === void 0 ? void 0 : _c.appendChild(scoreHolder);
         let scoreString = `Score: 0`;
         scoreHolder.innerHTML = scoreString;
         this.gameLoop();
