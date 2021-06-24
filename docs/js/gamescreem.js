@@ -5,44 +5,60 @@ import { Powerup } from "./powerup.js";
 let game = document.querySelector("game");
 export class GameScreen {
     constructor() {
-        var _a, _b, _c;
         this.clouds = [];
+        this.spawnCounterEnemies = 0;
         this.enemies = [];
         this.powerups = [];
         this.gameScore = 0;
         console.log("Game was created!");
-        this.gameStats = document.createElement("gamestats");
-        game === null || game === void 0 ? void 0 : game.appendChild(this.gameStats);
-        let title = document.createElement("name");
-        (_a = this.gameStats) === null || _a === void 0 ? void 0 : _a.appendChild(title);
-        title.innerHTML = "Pigeon War";
-        for (let i = 0; i < 30; i++) {
-            this.clouds.push(new Cloud("cloud"));
-        }
-        this.player = new Player("player");
-        for (let i = 0; i < 5; i++) {
-            this.enemies.push(new Enemy("enemy"));
-        }
-        setTimeout(() => {
-            this.powerups.push(new Powerup("powerup"));
-        }, Math.floor(Math.random() * (25000 - 15000) + 15000));
-        let liveHolder = document.createElement("lives");
-        for (let i = 0; i < this.player.getLives(); i++) {
-            let life = document.createElement("life");
-            life.style.backgroundImage = "url(./images/life.png)";
-            liveHolder.appendChild(life);
-        }
-        (_b = this.gameStats) === null || _b === void 0 ? void 0 : _b.appendChild(liveHolder);
-        let scoreHolder = document.createElement("score");
-        (_c = this.gameStats) === null || _c === void 0 ? void 0 : _c.appendChild(scoreHolder);
-        let scoreString = `Score: 0`;
-        scoreHolder.innerHTML = scoreString;
-        this.gameLoop();
+        this.introductionDiv = document.createElement("introductionDiv");
+        game === null || game === void 0 ? void 0 : game.appendChild(this.introductionDiv);
+        const text = document.createElement("h1");
+        this.introductionDiv.appendChild(text);
+        text.innerText = "Volume up! Instructions";
+        const introductionSound = new Audio("./sounds/introduction.wav");
+        introductionSound.play();
+        introductionSound.onended = () => {
+            var _a, _b, _c;
+            this.introductionDiv.remove();
+            this.gameStats = document.createElement("gamestats");
+            game === null || game === void 0 ? void 0 : game.appendChild(this.gameStats);
+            let title = document.createElement("name");
+            (_a = this.gameStats) === null || _a === void 0 ? void 0 : _a.appendChild(title);
+            title.innerHTML = "Pigeon War";
+            for (let i = 0; i < 30; i++) {
+                this.clouds.push(new Cloud("cloud"));
+            }
+            this.player = new Player("player");
+            for (let i = 0; i < 5; i++) {
+                this.enemies.push(new Enemy("enemy"));
+            }
+            setTimeout(() => {
+                this.powerups.push(new Powerup("powerup"));
+            }, Math.floor(Math.random() * (25000 - 15000) + 15000));
+            let liveHolder = document.createElement("lives");
+            for (let i = 0; i < this.player.getLives(); i++) {
+                let life = document.createElement("life");
+                life.style.backgroundImage = "url(./images/life.png)";
+                liveHolder.appendChild(life);
+            }
+            (_b = this.gameStats) === null || _b === void 0 ? void 0 : _b.appendChild(liveHolder);
+            let scoreHolder = document.createElement("score");
+            (_c = this.gameStats) === null || _c === void 0 ? void 0 : _c.appendChild(scoreHolder);
+            let scoreString = `Score: 0`;
+            scoreHolder.innerHTML = scoreString;
+            this.gameLoop();
+        };
     }
     gameLoop() {
         if (this.player.getLives() != 0) {
             for (let c of this.clouds) {
                 c.update();
+            }
+            this.spawnCounterEnemies++;
+            if (this.spawnCounterEnemies > 900) {
+                this.spawnCounterEnemies = 0;
+                this.enemies.push(new Enemy("enemy"));
             }
             for (let e of this.enemies) {
                 e.update();
@@ -68,8 +84,8 @@ export class GameScreen {
                     if (hit) {
                         e.killEnemy();
                         b.removeBullet();
+                        this.player.removeFromBullets(b);
                         this.gameScore += 50;
-                        console.log(this.gameScore);
                         let scoreHolder = document.querySelector("score");
                         let scoreString = `Score: ${this.gameScore}`;
                         scoreHolder.innerHTML = scoreString;

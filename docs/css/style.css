@@ -56,6 +56,19 @@ body game {
           animation-timing-function: linear;
 }
 
+body game introductionDiv {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+body game introductionDiv h1 {
+  font-size: 50px;
+  text-align: center;
+}
+
 body game cloud, body game bigcloud, body game player, body game bullet, body game powerup, body game enemy {
   position: absolute;
   display: block;

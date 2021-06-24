@@ -4,7 +4,7 @@ export class Player extends CollisionGameObject {
     constructor(tagName) {
         super(tagName);
         this.yspeed = 0;
-        this.bullets = [];
+        this._bullets = [];
         this.lives = 3;
         this.shield = false;
         this.skin = "url(./images/pigeon.gif)";
@@ -12,6 +12,12 @@ export class Player extends CollisionGameObject {
         window.addEventListener("keydown", (e) => this.onKeyDown(e));
         window.addEventListener("keyup", (e) => this.onKeyUp(e));
         this.create();
+    }
+    get bullets() {
+        return this._bullets;
+    }
+    set bullets(value) {
+        this._bullets = value;
     }
     create() {
         this.div.classList.add("player");
@@ -55,6 +61,9 @@ export class Player extends CollisionGameObject {
     }
     getShield() {
         return this.shield;
+    }
+    removeFromBullets(removedbullet) {
+        this.bullets = this.bullets.filter(bullet => bullet !== removedbullet);
     }
     onKeyDown(e) {
         switch (e.key.toUpperCase()) {

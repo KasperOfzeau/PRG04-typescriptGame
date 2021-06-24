@@ -4,7 +4,13 @@ import { CollisionGameObject } from "./collisiongameobject.js";
 export class Player extends CollisionGameObject {
 
     private yspeed : number = 0;
-    public bullets : Bullet[] = [];
+    private _bullets: Bullet[] = [];
+    public get bullets(): Bullet[] {
+        return this._bullets;
+    }
+    public set bullets(value: Bullet[]) {
+        this._bullets = value;
+    }
     private lives : number = 3;
     private shield : boolean = false;
     private skin : string = "url(./images/pigeon.gif)";
@@ -68,6 +74,10 @@ export class Player extends CollisionGameObject {
 
     public getShield() : boolean {
         return this.shield;
+    }
+    
+    public removeFromBullets(removedbullet : Bullet) {
+        this.bullets = this.bullets.filter(bullet => bullet !== removedbullet);
     }
 
     private onKeyDown(e: KeyboardEvent): void {

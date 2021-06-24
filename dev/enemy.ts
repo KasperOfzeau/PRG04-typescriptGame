@@ -25,11 +25,11 @@ export class Enemy extends CollisionGameObject {
     }
 
     public update() {
-        // Move the cloud (x-value) to the left. 
+        // Move the enemy (x-value) to the left. 
         this.x -= this.xspeed;
-        // Check if the cloud is completely outside the screen (left side)
+        // Check if the enemy is completely outside the screen (left side)
         if(this.x + this.div.clientWidth * 2 < 0) {
-            // Place the cloud on the right side outside the screen
+            // Place the enemy on the right side outside the screen
             this.x = window.innerWidth + this.div.clientWidth;
             // Generate a random y-value
             this.y = Math.floor(Math.random() * (window.innerHeight - this.div.clientHeight));
