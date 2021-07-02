@@ -103,7 +103,7 @@ export class Player extends CollisionGameObject {
                 break
             case " ":
                 this.bullets.push(new Bullet());
-                    break
+                break
         }
     }
 }
