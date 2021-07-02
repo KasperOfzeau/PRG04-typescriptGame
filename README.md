@@ -18,3 +18,7 @@
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+* **Droeftoeter** - *Name of the game* 
+* **Gaminator** - *Theme and game mechanics* - [Gaminator](https://hr-cmgt.github.io/gaminator/)
