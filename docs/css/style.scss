@@ -77,9 +77,9 @@ body {
       
       bullet {
         background-image: url(../images/bullet.png);
-          background-size: contain;
-          width:60px; height: 40px;
-          z-index: 999;
+        background-size: contain;
+        width:60px; height: 40px;
+        z-index: 999;
       }
 
       enemy {
@@ -174,7 +174,6 @@ body {
       }
   }
 }
-
 @keyframes backgroundColorPalette {
     0% {
       background: #add8e6;
